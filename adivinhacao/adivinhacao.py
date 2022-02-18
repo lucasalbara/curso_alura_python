@@ -1,13 +1,26 @@
+import random
+
 print("*********************************")
 print("Bem vindo ao jogo de adivinhação!")
 print("*********************************")
 
-numero_secreto = 42
+numero_secreto = random.randrange(1,101)
 total_de_tentativas = 3
-rodada = 1
 
-while(rodada <= total_de_tentativas):
-    print("Tentativa {} de {}",format(rodada, total_de_tentativas))
+print("qual nível de dificuldade")
+print("(1) Fácil (2) Médio (3) Dificil")
+
+nivel = int(input("Define o nível"))
+
+if(nivel == 1):
+    total_de_tentativas = 20
+elif(nivel == 2):
+    total_de_tentativas = 10
+elif(nivel == 3):
+    total_de_tentativas = 5
+
+for rodada in range(1, total_de_tentativas + 1):
+    print("Tentativa {} de {}".format(rodada, total_de_tentativas))
     chute_str = input("Digite o seu numero: ")
     print ("Você digitou", chute_str)
     chute = int(chute_str)
@@ -26,5 +39,5 @@ while(rodada <= total_de_tentativas):
 
     rodada = rodada + 1
 
-    if(rodada == 3):
+    if(rodada < nivel ):
         print("Fim do jogo!")
